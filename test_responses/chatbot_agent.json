@@ -1,0 +1,33 @@
+{
+  "agent_id": "698b322e8e1f45e6758ebeec",
+  "agent_name": "Chatbot Agent",
+  "test_input": "Hello! Can you tell me 3 interesting facts about space?",
+  "raw_response": {
+    "status": "success",
+    "result": {
+      "summary": "Three interesting facts about space.",
+      "data": {
+        "response": "Absolutely! Here are three intriguing facts about space:\n\n1. Space is completely silent: Since there is no air in space, sound cannot travel, making it a completely silent environment.\n2. A day on Venus is longer than its year: Venus takes about 243 Earth days to rotate once on its axis, but only about 225 Earth days to orbit the Sun.\n3. Neutron stars are incredibly dense: Just a sugar-cube-sized amount of neutron star material would weigh about a billion tons on Earth!\n",
+        "follow_up": "Would you like to know more about any of these facts or explore a specific area of space science?"
+      }
+    },
+    "metadata": {
+      "agent_name": "Chatbot Agent",
+      "timestamp": "2024-06-18T13:08:30Z"
+    }
+  },
+  "field_types": {
+    "status": "string - typically 'success' or 'error'",
+    "result": "object - contains summary and data sub-objects",
+    "result.summary": "string - brief summary of the response",
+    "result.data": "object - contains the main response content",
+    "result.data.response": "string - the actual text response from the agent",
+    "result.data.follow_up": "string - a follow-up suggestion or question",
+    "metadata": "object - contains agent_name and timestamp",
+    "metadata.agent_name": "string - name of the agent that responded",
+    "metadata.timestamp": "string - ISO 8601 timestamp of the response"
+  },
+  "response_format": "standard",
+  "test_passed": true,
+  "timestamp": "2026-02-10T00:00:00Z"
+}

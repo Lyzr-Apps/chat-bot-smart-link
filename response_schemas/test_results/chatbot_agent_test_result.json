@@ -1,0 +1,24 @@
+{
+  "agent_name": "Chatbot Agent",
+  "agent_id": "698b322e8e1f45e6758ebeec",
+  "test_message": "Hello! Can you tell me 3 interesting facts about space?",
+  "expected_purpose": "General conversational assistant that responds to user queries",
+  "timestamp": "2026-02-10T13:28:05.629628",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "summary": "Three interesting facts about space.",
+      "data": {
+        "response": "Absolutely! Here are three intriguing facts about space:\n\n1. Space is completely silent: Since there is no air in space, sound cannot travel, making it a completely silent environment.\n2. A day on Venus is longer than its year: Venus takes about 243 Earth days to rotate once on its axis, but only about 225 Earth days to orbit the Sun.\n3. Neutron stars are incredibly dense: Just a sugar-cube-sized amount of neutron star material would weigh about a billion tons on Earth!\n",
+        "follow_up": "Would you like to know more about any of these facts or explore a specific area of space science?"
+      }
+    },
+    "metadata": {
+      "agent_name": "Chatbot Agent",
+      "timestamp": "2024-06-18T13:08:30Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"summary\": \"Three interesting facts about space.\",\n    \"data\": {\n      \"response\": \"Absolutely! Here are three intriguing facts about space:\\n\\n1. Space is completely silent: Since there is no air in space, sound cannot travel, making it a completely silent environment.\\n2. A day on Venus is longer than its year: Venus takes about 243 Earth days to rotate once on its axis, but only about 225 Earth days to orbit the Sun.\\n3. Neutron stars are incredibly dense: Just a sugar-cube-sized amount of neutron star material would weigh about a billion tons on Earth!\\n\",\n      \"follow_up\": \"Would you like to know more about any of these facts or explore a specific area of space science?\"\n    }\n  },\n  \"metadata\": {\n    \"agent_name\": \"Chatbot Agent\",\n    \"timestamp\": \"2024-06-18T13:08:30Z\"\n  }\n}"
+}

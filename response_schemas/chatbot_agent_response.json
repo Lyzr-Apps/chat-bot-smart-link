@@ -1,0 +1,51 @@
+{
+  "agent_name": "Chatbot Agent",
+  "agent_id": "698b322e8e1f45e6758ebeec",
+  "agent_purpose": "General conversational assistant that responds to user queries",
+  "description": "Chatbot Agent returns a structured response with a summary, main text response, and a follow-up suggestion. The result object contains nested data with the conversational reply.",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "summary": "string",
+      "data": {
+        "response": "string",
+        "follow_up": "string"
+      }
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "summary": "Sample response provided as requested.",
+      "data": {
+        "response": "Sure! Here\u2019s a sample response: If you have a specific question or need help with something, just let me know and I\u2019ll be happy to assist you.",
+        "follow_up": "Is there a particular topic or question you\u2019d like help with?"
+      }
+    },
+    "metadata": {
+      "agent_name": "Chatbot Agent",
+      "timestamp": "2024-06-13T15:18:09Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-10T13:28:25.990147",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "summary": "Sample response provided as requested.",
+      "data": {
+        "response": "Sure! Here\u2019s a sample response: If you have a specific question or need help with something, just let me know and I\u2019ll be happy to assist you.",
+        "follow_up": "Is there a particular topic or question you\u2019d like help with?"
+      }
+    },
+    "metadata": {
+      "agent_name": "Chatbot Agent",
+      "timestamp": "2024-06-13T15:18:09Z"
+    }
+  }
+}
