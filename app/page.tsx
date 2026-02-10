@@ -118,6 +118,38 @@ function renderInlineMarkdown(text: string): React.ReactNode {
   return parts.length === 1 ? parts[0] : <>{parts}</>
 }
 
+function DancingBall() {
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <div
+        className="absolute w-3 h-3 rounded-full opacity-40"
+        style={{
+          background: 'radial-gradient(circle at 30% 30%, #6ee7b7, #059669)',
+          boxShadow: '0 0 12px 4px rgba(16, 185, 129, 0.3)',
+          animation: 'dancingBall 8s ease-in-out infinite',
+          left: '20%',
+          top: '30%',
+        }}
+      />
+      <style>{`
+        @keyframes dancingBall {
+          0% { transform: translate(0, 0) scale(1); }
+          10% { transform: translate(60px, -40px) scale(1.15); }
+          20% { transform: translate(120px, 20px) scale(0.9); }
+          30% { transform: translate(80px, 80px) scale(1.1); }
+          40% { transform: translate(-20px, 100px) scale(0.85); }
+          50% { transform: translate(-60px, 50px) scale(1.2); }
+          60% { transform: translate(-40px, -30px) scale(0.95); }
+          70% { transform: translate(30px, -70px) scale(1.05); }
+          80% { transform: translate(90px, -20px) scale(0.9); }
+          90% { transform: translate(40px, 40px) scale(1.1); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 function TypingIndicator() {
   return (
     <div className="flex items-start gap-3 px-4 md:px-8 lg:px-16 py-2">
@@ -361,6 +393,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen h-screen flex flex-col bg-gradient-to-br from-[hsl(160,30%,8%)] via-[hsl(170,25%,10%)] to-[hsl(150,20%,7%)]">
+      {/* Dancing Ball Background */}
+      <DancingBall />
+
       {/* Header */}
       <header className="flex-shrink-0 bg-white/[0.04] backdrop-blur-[16px] border-b border-white/[0.08] shadow-sm shadow-black/20 z-10">
         <div className="flex items-center justify-between px-4 md:px-8 lg:px-16 py-3">
