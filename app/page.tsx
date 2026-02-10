@@ -124,8 +124,8 @@ function DancingBall() {
       <div
         className="absolute w-3 h-3 rounded-full opacity-40"
         style={{
-          background: 'radial-gradient(circle at 30% 30%, #6ee7b7, #059669)',
-          boxShadow: '0 0 12px 4px rgba(16, 185, 129, 0.3)',
+          background: 'radial-gradient(circle at 30% 30%, #fde68a, #eab308)',
+          boxShadow: '0 0 12px 4px rgba(234, 179, 8, 0.3)',
           animation: 'dancingBall 8s ease-in-out infinite',
           left: '20%',
           top: '30%',
