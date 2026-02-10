@@ -118,21 +118,34 @@ function renderInlineMarkdown(text: string): React.ReactNode {
   return parts.length === 1 ? parts[0] : <>{parts}</>
 }
 
+const DANCING_BALLS = [
+  { size: 'w-3 h-3', left: '15%', top: '25%', opacity: 0.35, duration: 8, gradient: '#fde68a, #eab308', glow: 'rgba(234, 179, 8, 0.3)', delay: 0 },
+  { size: 'w-2.5 h-2.5', left: '70%', top: '15%', opacity: 0.3, duration: 10, gradient: '#fde68a, #f59e0b', glow: 'rgba(245, 158, 11, 0.25)', delay: -2 },
+  { size: 'w-2 h-2', left: '50%', top: '60%', opacity: 0.25, duration: 12, gradient: '#fef08a, #eab308', glow: 'rgba(234, 179, 8, 0.2)', delay: -4 },
+  { size: 'w-3.5 h-3.5', left: '80%', top: '70%', opacity: 0.2, duration: 9, gradient: '#fde68a, #d97706', glow: 'rgba(217, 119, 6, 0.25)', delay: -6 },
+  { size: 'w-1.5 h-1.5', left: '35%', top: '80%', opacity: 0.3, duration: 11, gradient: '#fef9c3, #eab308', glow: 'rgba(234, 179, 8, 0.2)', delay: -3 },
+]
+
 function DancingBall() {
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      <div
-        className="absolute w-3 h-3 rounded-full opacity-40"
-        style={{
-          background: 'radial-gradient(circle at 30% 30%, #fde68a, #eab308)',
-          boxShadow: '0 0 12px 4px rgba(234, 179, 8, 0.3)',
-          animation: 'dancingBall 8s ease-in-out infinite',
-          left: '20%',
-          top: '30%',
-        }}
-      />
+      {DANCING_BALLS.map((ball, i) => (
+        <div
+          key={i}
+          className={`absolute ${ball.size} rounded-full`}
+          style={{
+            background: `radial-gradient(circle at 30% 30%, ${ball.gradient})`,
+            boxShadow: `0 0 12px 4px ${ball.glow}`,
+            animation: `dancingBall${i} ${ball.duration}s ease-in-out infinite`,
+            animationDelay: `${ball.delay}s`,
+            left: ball.left,
+            top: ball.top,
+            opacity: ball.opacity,
+          }}
+        />
+      ))}
       <style>{`
-        @keyframes dancingBall {
+        @keyframes dancingBall0 {
           0% { transform: translate(0, 0) scale(1); }
           10% { transform: translate(60px, -40px) scale(1.15); }
           20% { transform: translate(120px, 20px) scale(0.9); }
@@ -143,6 +156,46 @@ function DancingBall() {
           70% { transform: translate(30px, -70px) scale(1.05); }
           80% { transform: translate(90px, -20px) scale(0.9); }
           90% { transform: translate(40px, 40px) scale(1.1); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes dancingBall1 {
+          0% { transform: translate(0, 0) scale(1); }
+          12% { transform: translate(-50px, 60px) scale(1.1); }
+          25% { transform: translate(-100px, 30px) scale(0.85); }
+          37% { transform: translate(-40px, -50px) scale(1.15); }
+          50% { transform: translate(30px, -80px) scale(0.9); }
+          62% { transform: translate(70px, -20px) scale(1.05); }
+          75% { transform: translate(40px, 50px) scale(0.95); }
+          87% { transform: translate(-20px, 70px) scale(1.1); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes dancingBall2 {
+          0% { transform: translate(0, 0) scale(1); }
+          15% { transform: translate(40px, -60px) scale(0.9); }
+          30% { transform: translate(-30px, -90px) scale(1.15); }
+          45% { transform: translate(-70px, -20px) scale(0.85); }
+          60% { transform: translate(-50px, 40px) scale(1.1); }
+          75% { transform: translate(20px, 70px) scale(0.95); }
+          90% { transform: translate(60px, 20px) scale(1.05); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes dancingBall3 {
+          0% { transform: translate(0, 0) scale(1); }
+          14% { transform: translate(-60px, -30px) scale(1.1); }
+          28% { transform: translate(-80px, 40px) scale(0.9); }
+          42% { transform: translate(-20px, 80px) scale(1.05); }
+          56% { transform: translate(50px, 50px) scale(0.85); }
+          70% { transform: translate(70px, -10px) scale(1.15); }
+          84% { transform: translate(30px, -50px) scale(0.95); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes dancingBall4 {
+          0% { transform: translate(0, 0) scale(1); }
+          16% { transform: translate(50px, 30px) scale(1.15); }
+          33% { transform: translate(80px, -40px) scale(0.9); }
+          50% { transform: translate(20px, -70px) scale(1.05); }
+          66% { transform: translate(-40px, -30px) scale(0.85); }
+          83% { transform: translate(-60px, 20px) scale(1.1); }
           100% { transform: translate(0, 0) scale(1); }
         }
       `}</style>
