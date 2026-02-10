@@ -38,19 +38,19 @@ function renderMarkdown(text: string) {
 
     if (trimmed.startsWith('### ')) {
       elements.push(
-        <h3 key={idx} className="text-base font-semibold mt-3 mb-1 tracking-[-0.01em]">
+        <h3 key={idx} className="text-base font-semibold mt-3 mb-1 tracking-[-0.01em] text-emerald-50">
           {renderInlineMarkdown(trimmed.slice(4))}
         </h3>
       )
     } else if (trimmed.startsWith('## ')) {
       elements.push(
-        <h2 key={idx} className="text-lg font-semibold mt-3 mb-1 tracking-[-0.01em]">
+        <h2 key={idx} className="text-lg font-semibold mt-3 mb-1 tracking-[-0.01em] text-emerald-50">
           {renderInlineMarkdown(trimmed.slice(3))}
         </h2>
       )
     } else if (trimmed.startsWith('# ')) {
       elements.push(
-        <h1 key={idx} className="text-xl font-semibold mt-3 mb-1 tracking-[-0.01em]">
+        <h1 key={idx} className="text-xl font-semibold mt-3 mb-1 tracking-[-0.01em] text-emerald-50">
           {renderInlineMarkdown(trimmed.slice(2))}
         </h1>
       )
@@ -58,7 +58,7 @@ function renderMarkdown(text: string) {
       const content = trimmed.replace(/^\d+\.\s/, '')
       elements.push(
         <div key={idx} className="flex gap-2 ml-1 my-0.5 leading-[1.55]">
-          <span className="text-[hsl(160,25%,40%)] font-medium min-w-[1.25rem]">{trimmed.match(/^\d+/)?.[0]}.</span>
+          <span className="text-emerald-400 font-medium min-w-[1.25rem]">{trimmed.match(/^\d+/)?.[0]}.</span>
           <span>{renderInlineMarkdown(content)}</span>
         </div>
       )
@@ -66,8 +66,8 @@ function renderMarkdown(text: string) {
       const content = trimmed.slice(2)
       elements.push(
         <div key={idx} className="flex gap-2 ml-1 my-0.5 leading-[1.55]">
-          <span className="text-[hsl(160,85%,35%)] mt-1.5 min-w-[0.5rem]">
-            <span className="block w-1.5 h-1.5 rounded-full bg-[hsl(160,85%,35%)]" />
+          <span className="text-emerald-400 mt-1.5 min-w-[0.5rem]">
+            <span className="block w-1.5 h-1.5 rounded-full bg-emerald-400" />
           </span>
           <span>{renderInlineMarkdown(content)}</span>
         </div>
@@ -98,10 +98,10 @@ function renderInlineMarkdown(text: string): React.ReactNode {
       parts.push(text.slice(lastIndex, match.index))
     }
     if (match[1]) {
-      parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>)
+      parts.push(<strong key={match.index} className="font-semibold text-emerald-300">{match[1]}</strong>)
     } else if (match[2]) {
       parts.push(
-        <code key={match.index} className="px-1.5 py-0.5 rounded bg-[hsl(160,25%,90%)] text-[hsl(160,35%,25%)] text-[0.875em] font-mono">
+        <code key={match.index} className="px-1.5 py-0.5 rounded bg-emerald-950/60 text-emerald-300 text-[0.875em] font-mono">
           {match[2]}
         </code>
       )
@@ -121,14 +121,14 @@ function renderInlineMarkdown(text: string): React.ReactNode {
 function TypingIndicator() {
   return (
     <div className="flex items-start gap-3 px-4 md:px-8 lg:px-16 py-2">
-      <div className="w-8 h-8 rounded-full bg-[hsl(160,85%,35%)] flex items-center justify-center flex-shrink-0 shadow-sm">
+      <div className="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center flex-shrink-0 shadow-sm shadow-emerald-900/30">
         <BsRobot className="w-4 h-4 text-white" />
       </div>
-      <div className="bg-white/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] rounded-tl-sm px-4 py-3 shadow-md">
+      <div className="bg-white/[0.07] backdrop-blur-[16px] border border-white/[0.1] rounded-[0.875rem] rounded-tl-sm px-4 py-3 shadow-md shadow-black/20">
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 bg-[hsl(160,85%,35%)] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-          <span className="w-2 h-2 bg-[hsl(160,85%,35%)] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-          <span className="w-2 h-2 bg-[hsl(160,85%,35%)] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+          <span className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+          <span className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+          <span className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
         </div>
       </div>
     </div>
@@ -138,11 +138,11 @@ function TypingIndicator() {
 function WelcomeState({ onStarterClick }: { onStarterClick: (text: string) => void }) {
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-4 py-12">
-      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[hsl(160,85%,35%)] to-[hsl(160,85%,28%)] flex items-center justify-center mb-6 shadow-lg shadow-[hsl(160,85%,35%)]/20">
+      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/20">
         <HiOutlineSparkles className="w-7 h-7 text-white" />
       </div>
-      <h2 className="text-2xl font-semibold text-[hsl(160,35%,8%)] mb-2 tracking-[-0.01em]">How can I help you today?</h2>
-      <p className="text-[hsl(160,25%,40%)] mb-8 text-center max-w-md leading-[1.55]">
+      <h2 className="text-2xl font-semibold text-gray-100 mb-2 tracking-[-0.01em]">How can I help you today?</h2>
+      <p className="text-gray-400 mb-8 text-center max-w-md leading-[1.55]">
         Ask me anything -- I can help with facts, writing, explanations, brainstorming, and much more.
       </p>
       <div className="flex flex-wrap gap-3 justify-center max-w-lg">
@@ -150,7 +150,7 @@ function WelcomeState({ onStarterClick }: { onStarterClick: (text: string) => vo
           <button
             key={starter}
             onClick={() => onStarterClick(starter)}
-            className="px-4 py-2.5 bg-white/75 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] text-sm font-medium text-[hsl(160,35%,8%)] hover:bg-[hsl(160,85%,35%)] hover:text-white transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+            className="px-4 py-2.5 bg-white/[0.07] backdrop-blur-[16px] border border-white/[0.1] rounded-[0.875rem] text-sm font-medium text-gray-300 hover:bg-emerald-600 hover:text-white hover:border-emerald-500/50 transition-all duration-200 shadow-sm shadow-black/10 hover:shadow-emerald-500/10 cursor-pointer"
           >
             {starter}
           </button>
@@ -166,11 +166,11 @@ function MessageBubble({ message }: { message: Message }) {
   return (
     <div className={`flex items-start gap-3 px-4 md:px-8 lg:px-16 py-2 ${isUser ? 'flex-row-reverse' : 'flex-row'}`}>
       {isUser ? (
-        <div className="w-8 h-8 rounded-full bg-[hsl(160,30%,93%)] flex items-center justify-center flex-shrink-0 shadow-sm">
-          <FaUser className="w-3.5 h-3.5 text-[hsl(160,35%,8%)]" />
+        <div className="w-8 h-8 rounded-full bg-emerald-600/30 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 shadow-sm">
+          <FaUser className="w-3.5 h-3.5 text-emerald-300" />
         </div>
       ) : (
-        <div className="w-8 h-8 rounded-full bg-[hsl(160,85%,35%)] flex items-center justify-center flex-shrink-0 shadow-sm">
+        <div className="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center flex-shrink-0 shadow-sm shadow-emerald-900/30">
           <BsRobot className="w-4 h-4 text-white" />
         </div>
       )}
@@ -178,8 +178,8 @@ function MessageBubble({ message }: { message: Message }) {
         <div
           className={
             isUser
-              ? 'px-4 py-3 rounded-[0.875rem] rounded-tr-sm bg-[hsl(160,85%,35%)] text-white shadow-md shadow-[hsl(160,85%,35%)]/10'
-              : 'px-4 py-3 rounded-[0.875rem] rounded-tl-sm bg-white/75 backdrop-blur-[16px] border border-white/[0.18] shadow-md text-[hsl(160,35%,8%)]'
+              ? 'px-4 py-3 rounded-[0.875rem] rounded-tr-sm bg-emerald-600 text-white shadow-md shadow-emerald-900/20'
+              : 'px-4 py-3 rounded-[0.875rem] rounded-tl-sm bg-white/[0.07] backdrop-blur-[16px] border border-white/[0.1] shadow-md shadow-black/20 text-gray-200'
           }
         >
           {isUser ? (
@@ -189,11 +189,11 @@ function MessageBubble({ message }: { message: Message }) {
           )}
         </div>
         {message.followUp && !isUser && (
-          <div className="mt-2 px-3 py-2 rounded-lg bg-[hsl(160,30%,93%)] border border-[hsl(160,28%,88%)] max-w-full">
-            <p className="text-xs text-[hsl(160,25%,40%)] italic leading-[1.55]">{message.followUp}</p>
+          <div className="mt-2 px-3 py-2 rounded-lg bg-emerald-950/40 border border-emerald-800/30 max-w-full">
+            <p className="text-xs text-emerald-400/80 italic leading-[1.55]">{message.followUp}</p>
           </div>
         )}
-        <span className="text-[10px] text-[hsl(160,25%,40%)] mt-1 px-1 opacity-60">{message.timestamp}</span>
+        <span className="text-[10px] text-gray-500 mt-1 px-1 opacity-70">{message.timestamp}</span>
       </div>
     </div>
   )
@@ -202,17 +202,17 @@ function MessageBubble({ message }: { message: Message }) {
 function AgentInfoCard({ isActive }: { isActive: boolean }) {
   return (
     <div className="px-4 md:px-8 lg:px-16 pb-3 pt-1">
-      <div className="bg-white/50 backdrop-blur-[16px] border border-white/[0.18] rounded-[0.875rem] px-4 py-3 shadow-sm">
+      <div className="bg-white/[0.05] backdrop-blur-[16px] border border-white/[0.08] rounded-[0.875rem] px-4 py-3 shadow-sm shadow-black/10">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-amber-400 animate-pulse' : 'bg-[hsl(160,85%,35%)]'}`} />
-            <span className="text-xs font-medium text-[hsl(160,35%,8%)]">Chatbot Agent</span>
+            <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'}`} />
+            <span className="text-xs font-medium text-gray-300">Chatbot Agent</span>
           </div>
-          <div className="w-px h-4 bg-[hsl(160,28%,88%)]" />
-          <span className="text-xs text-[hsl(160,25%,40%)]">
+          <div className="w-px h-4 bg-white/[0.1]" />
+          <span className="text-xs text-gray-500">
             {isActive ? 'Processing...' : 'Ready'}
           </span>
-          <span className="text-[10px] py-0.5 px-1.5 border border-[hsl(160,28%,88%)] rounded text-[hsl(160,25%,40%)] ml-auto">
+          <span className="text-[10px] py-0.5 px-1.5 border border-white/[0.1] rounded text-gray-500 ml-auto">
             {AGENT_ID.slice(0, 8)}...
           </span>
         </div>
@@ -360,23 +360,23 @@ export default function Home() {
   const showWelcome = displayMessages.length === 0
 
   return (
-    <div className="min-h-screen h-screen flex flex-col bg-gradient-to-br from-[hsl(160,40%,94%)] via-[hsl(180,35%,93%)] to-[hsl(140,40%,94%)]">
+    <div className="min-h-screen h-screen flex flex-col bg-gradient-to-br from-[hsl(160,30%,8%)] via-[hsl(170,25%,10%)] to-[hsl(150,20%,7%)]">
       {/* Header */}
-      <header className="flex-shrink-0 bg-white/60 backdrop-blur-[16px] border-b border-white/[0.18] shadow-sm z-10">
+      <header className="flex-shrink-0 bg-white/[0.04] backdrop-blur-[16px] border-b border-white/[0.08] shadow-sm shadow-black/20 z-10">
         <div className="flex items-center justify-between px-4 md:px-8 lg:px-16 py-3">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-[0.875rem] bg-gradient-to-br from-[hsl(160,85%,35%)] to-[hsl(160,85%,28%)] flex items-center justify-center shadow-sm">
+            <div className="w-9 h-9 rounded-[0.875rem] bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-sm shadow-emerald-900/40">
               <BsChatDots className="w-4 h-4 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-semibold text-[hsl(160,35%,8%)] tracking-[-0.01em] leading-tight">Chat Assistant</h1>
-              <p className="text-[11px] text-[hsl(160,25%,40%)]">Powered by AI</p>
+              <h1 className="text-lg font-semibold text-gray-100 tracking-[-0.01em] leading-tight">Chat Assistant</h1>
+              <p className="text-[11px] text-gray-500">Powered by AI</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <button
               onClick={handleNewChat}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-[0.875rem] bg-white/75 backdrop-blur-[16px] border border-white/[0.18] text-[hsl(160,35%,8%)] hover:bg-[hsl(160,85%,35%)] hover:text-white transition-all duration-200 text-sm font-medium shadow-sm cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-[0.875rem] bg-white/[0.07] backdrop-blur-[16px] border border-white/[0.1] text-gray-300 hover:bg-emerald-600 hover:text-white hover:border-emerald-500/50 transition-all duration-200 text-sm font-medium shadow-sm shadow-black/10 cursor-pointer"
               title="New Chat"
             >
               <FiPlus className="w-4 h-4" />
@@ -405,9 +405,9 @@ export default function Home() {
       <AgentInfoCard isActive={isLoading} />
 
       {/* Input Bar */}
-      <div className="flex-shrink-0 bg-white/60 backdrop-blur-[16px] border-t border-white/[0.18] px-4 md:px-8 lg:px-16 py-3">
+      <div className="flex-shrink-0 bg-white/[0.04] backdrop-blur-[16px] border-t border-white/[0.08] px-4 md:px-8 lg:px-16 py-3">
         <div className="flex items-end gap-3 max-w-4xl mx-auto">
-          <div className="flex-1 bg-white/75 backdrop-blur-[16px] border border-[hsl(160,25%,85%)] rounded-[0.875rem] px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-[hsl(160,85%,35%)] focus-within:border-transparent transition-all duration-200">
+          <div className="flex-1 bg-white/[0.07] backdrop-blur-[16px] border border-white/[0.1] rounded-[0.875rem] px-4 py-2 shadow-sm shadow-black/10 focus-within:ring-2 focus-within:ring-emerald-500/50 focus-within:border-emerald-500/30 transition-all duration-200">
             <textarea
               ref={textareaRef}
               value={input}
@@ -415,13 +415,13 @@ export default function Home() {
               onKeyDown={handleKeyDown}
               placeholder="Type your message..."
               rows={1}
-              className="w-full bg-transparent text-sm text-[hsl(160,35%,8%)] placeholder:text-[hsl(160,25%,65%)] resize-none outline-none leading-6 max-h-24 tracking-[-0.01em]"
+              className="w-full bg-transparent text-sm text-gray-200 placeholder:text-gray-600 resize-none outline-none leading-6 max-h-24 tracking-[-0.01em]"
             />
           </div>
           <button
             onClick={() => sendMessage()}
             disabled={!input.trim() || isLoading}
-            className="w-10 h-10 rounded-full bg-[hsl(160,85%,35%)] hover:bg-[hsl(160,85%,30%)] disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center text-white shadow-md shadow-[hsl(160,85%,35%)]/20 transition-all duration-200 flex-shrink-0 cursor-pointer"
+            className="w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-500 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-white shadow-md shadow-emerald-900/30 transition-all duration-200 flex-shrink-0 cursor-pointer"
             title="Send message"
           >
             {isLoading ? (
@@ -431,7 +431,7 @@ export default function Home() {
             )}
           </button>
         </div>
-        <p className="text-center text-[10px] text-[hsl(160,25%,65%)] mt-2">Press Enter to send, Shift+Enter for new line</p>
+        <p className="text-center text-[10px] text-gray-600 mt-2">Press Enter to send, Shift+Enter for new line</p>
       </div>
     </div>
   )
