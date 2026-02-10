@@ -203,6 +203,71 @@ function DancingBall() {
   )
 }
 
+function FlappingBird() {
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <div
+        className="absolute"
+        style={{
+          animation: 'birdFly 18s linear infinite',
+          top: '18%',
+        }}
+      >
+        <svg
+          width="20"
+          height="14"
+          viewBox="0 0 20 14"
+          fill="none"
+          className="opacity-30"
+          style={{ filter: 'drop-shadow(0 0 3px rgba(167, 139, 250, 0.3))' }}
+        >
+          <g style={{ animation: 'wingFlap 0.4s ease-in-out infinite' }}>
+            <path
+              d="M10 7 C7 7, 4 5, 0 1"
+              stroke="#a78bfa"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              fill="none"
+              style={{ animation: 'leftWing 0.4s ease-in-out infinite' }}
+            />
+            <path
+              d="M10 7 C13 7, 16 5, 20 1"
+              stroke="#a78bfa"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              fill="none"
+              style={{ animation: 'rightWing 0.4s ease-in-out infinite' }}
+            />
+          </g>
+          <circle cx="10" cy="7" r="1.2" fill="#c4b5fd" />
+        </svg>
+      </div>
+      <style>{`
+        @keyframes birdFly {
+          0% { left: -30px; top: 18%; }
+          15% { top: 14%; }
+          30% { top: 20%; }
+          45% { top: 12%; }
+          60% { top: 22%; }
+          75% { top: 16%; }
+          90% { top: 19%; }
+          100% { left: 105%; top: 15%; }
+        }
+        @keyframes leftWing {
+          0% { d: path("M10 7 C7 7, 4 5, 0 1"); }
+          50% { d: path("M10 7 C7 7, 4 9, 0 12"); }
+          100% { d: path("M10 7 C7 7, 4 5, 0 1"); }
+        }
+        @keyframes rightWing {
+          0% { d: path("M10 7 C13 7, 16 5, 20 1"); }
+          50% { d: path("M10 7 C13 7, 16 9, 20 12"); }
+          100% { d: path("M10 7 C13 7, 16 5, 20 1"); }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 function TypingIndicator() {
   return (
     <div className="flex items-start gap-3 px-4 md:px-8 lg:px-16 py-2">
@@ -446,8 +511,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen h-screen flex flex-col bg-gradient-to-br from-[hsl(160,30%,8%)] via-[hsl(170,25%,10%)] to-[hsl(150,20%,7%)]">
-      {/* Dancing Ball Background */}
+      {/* Background Animations */}
       <DancingBall />
+      <FlappingBird />
 
       {/* Header */}
       <header className="flex-shrink-0 bg-white/[0.04] backdrop-blur-[16px] border-b border-white/[0.08] shadow-sm shadow-black/20 z-10">
